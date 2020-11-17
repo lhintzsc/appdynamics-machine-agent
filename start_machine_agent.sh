@@ -83,6 +83,10 @@ if [ "x${APPDYNAMICS_AGENT_MAX_METRICS}" != "x" ]; then
     MA_PROPERTIES+="-Dappdynamics.agent.maxMetrics=${APPDYNAMICS_AGENT_MAX_METRICS} "
 fi
 
+if [ "x${APPDYNAMICS_AGENT_MAX_METRICS}" != "x" ]; then
+    MA_PROPERTIES+="-Dappdynamics.sim.enabled=${APPDYNAMICS_SIM_ENABLED} "
+fi
+
 echo "LOG_CONFIG: " $LOG_CONFIG
 echo "MA_PROPERTIES: " $MA_PROPERTIES
 echo "LOG_LEVEL: " $APPDYNAMICS_DEBUG_LEVEL

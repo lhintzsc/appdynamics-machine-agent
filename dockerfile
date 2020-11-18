@@ -43,5 +43,5 @@ WORKDIR ${AGENT_DIR}
 ADD post.sh .
 ADD start_machine_agent.sh .
 EXPOSE 8080
-#ENTRYPOINT /bin/bash ./start_machine_agent.sh
-ENTRYPOINT tail -f /dev/null
+ENTRYPOINT /bin/bash ./start_machine_agent.sh
+#ENTRYPOINT tail -f /dev/null

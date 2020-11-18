@@ -7,14 +7,16 @@
 # log settings
 #
 
-mkdir -p ${APPDYNAMICS_AGENT_LOG_DIR}
-
-LOG_CONFIG="" # ini log config
-LOG_CONFIG+="-Dlog4j.configurationFile=$AGENT_DIR/conf/logging/log4j.xml "
-LOG_CONFIG+="-Dappdynamics.agent.logs.dir=${APPDYNAMICS_AGENT_LOG_DIR} "
-
 if [ "${APPDYNAMICS_DEBUG_LEVEL}" == "debug" ]; then
     sed -i "s|info|debug|g" $AGENT_DIR/conf/logging/log4j.xml
+fi
+
+if [ "${APPDYNAMICS_DEBUG_OUTPUT}" == "file" ]; then
+	continue
+elif [ "${APPDYNAMICS_DEBUG_OUTPUT}" == "stdout" ]; then
+  sed -i "s|ref=\"FileAppender\"|ref=\"ConsoleAppender\"|g" $AGENT_DIR/conf/logging/log4j.xml
+else # default to console appender
+  sed -i "s|ref=\"FileAppender\"|ref=\"ConsoleAppender\"|g" $AGENT_DIR/conf/logging/log4j.xml
 fi
 
 #

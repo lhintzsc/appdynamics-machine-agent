@@ -8,7 +8,8 @@ docker run \
 	--env APPDYNAMICS_CONTROLLER_SSL_ENABLED="true" \
 	--env APPDYNAMICS_AGENT_CREATE_NODE_IF_ABSENT="true" \
 	--env APPDYNAMICS_HTTP_LISTENER="true" \
-	--env APPDYNAMICS_HTTP_LISTENER_PORT="8090" \
+	--env APPDYNAMICS_HTTP_LISTENER_PORT="8080" \
+	--env APPDYNAMICS_HTTP_LISTENER_HOST="0.0.0.0" \
 	--env APPDYNAMICS_AGENT_HIERARCHY_PATH="HTTP_TEST|Machine1" \
 	--env APPDYNAMICS_AGENT_APPLICATION_NAME="HTTP_TEST" \
 	--env APPDYNAMICS_AGENT_NODE_NAME="HTTP_TEST" \
@@ -17,8 +18,5 @@ docker run \
 	--env APPDYNAMICS_AGENT_MAX_METRICS="10000" \
 	--env APPDYNAMICS_AGENT_LOG_DIR="/opt/appd/machine_agent/logs" \
 	--env APPDYNAMICS_DEBUG_LEVEL="debug" \
-	-p 8090:8090 \
-	-d lhintzsc/machine-agent:latest 
-
-
-
+	-p 8090:8080 \
+	-d lhintzsc/appdynamics-machine-agent-http-listener:latest

@@ -9,6 +9,7 @@ POST_COUNT=${1:-"5"}
 POST_INTERVAL=${2:-"15"}
 VERBOSE=""
 #VERBOSE="-v"
+RESOURCE="/api/v1/metrics"
 
 _AppD_PostSingleMetric() {
   metricName=$1
@@ -27,7 +28,7 @@ _AppD_PostSingleMetric() {
   curl $VERBOSE -s \
        --header "Content-Type: application/json" \
        --data-binary "${METRIC_DATA}" \
-       -X POST "http://localhost:8080$APPD_MAC_AGENT_PATH"
+       -X POST "http://localhost:8080$RESOURCE"
 }
 
 #AGGREGATOR_TYPE="AVERAGE"

@@ -40,7 +40,7 @@ RUN apt-get update -y; \
 RUN mkdir -p ${AGENT_DIR}
 COPY --from=0 ${DOWNLOAD_FOLDER}/ ${AGENT_DIR}/
 WORKDIR ${AGENT_DIR}
-ADD post.sh .
+ADD heartbeat.sh .
 ADD start_machine_agent.sh .
 EXPOSE 8080
 ENTRYPOINT /bin/bash ./start_machine_agent.sh

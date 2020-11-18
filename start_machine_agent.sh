@@ -51,6 +51,7 @@ fi
 
 if [ "x${APPDYNAMICS_HTTP_LISTENER_PORT}" != "x" ]; then
     MA_PROPERTIES+="-Dmetric.http.listener.host=${APPDYNAMICS_HTTP_LISTENER_HOST} "
+    ./heartbeat.sh ${APPDYNAMICS_HTTP_LISTENER_PORT} &
 fi    
 
 if [ "x${APPDYNAMICS_AGENT_HIERARCHY_PATH}" != "x" ]; then # "Data Center 1|Rack 2|Machine3"
@@ -96,6 +97,7 @@ fi
 echo "LOG_CONFIG: " $LOG_CONFIG
 echo "MA_PROPERTIES: " $MA_PROPERTIES
 echo "LOG_LEVEL: " $APPDYNAMICS_DEBUG_LEVEL
+
 
 # start Machine Agent
 java ${MA_PROPERTIES} $LOG_CONFIG -jar machineagent.jar
